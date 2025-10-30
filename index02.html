@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauricio Angulo | Data Science Portfolio</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de la fuente Inter y colores personalizados -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --color-primary: #111827; /* gray-900 */
+            --color-secondary: #06b6d4; /* cyan-500 */
+            --color-text: #e5e7eb; /* gray-200 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+        }
+
+        /* Estilo para un fondo abstracto de ciencia de datos (opcional, basado en un degradado sutil) */
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 55, 0.8) 50%, rgba(17, 24, 39, 0.9) 100%), 
+                              url('https://placehold.co/1920x1080/0f0d23/06b6d4?text=Data+Network');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Estilo para hacer scroll suave en navegadores no compatibles con scroll-smooth */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación Fija -->
+    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-cyan-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition duration-300">
+                        M. Angulo<span class="text-gray-400">.Data</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Sobre Mí</a>
+                        <a href="#portfolio" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Portafolio</a>
+                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Contacto</a>
+                    </div>
+                </div>
+                <!-- Botón de Menú Móvil (oculto por defecto en desktop) -->
+                <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500">
+                    <!-- Icono de Hamburguesa SVG -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil (oculto por defecto) -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Sobre Mí</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Portafolio</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero/Principal -->
+    <header class="hero-bg pt-20 pb-28 md:py-48 flex items-center justify-center border-b-4 border-cyan-500/50">
+        <div class="text-center max-w-4xl px-4">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-4">
+                Mauricio Angulo
+            </h1>
+            <p class="text-xl sm:text-3xl font-light text-cyan-300 mb-8">
+                Ingeniero de Datos & Científico de Datos | <span class="font-medium text-gray-200">Datos que impulsan el futuro</span>
+            </p>
+            <a href="#portfolio" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-gray-900 bg-cyan-400 hover:bg-cyan-300 transition duration-300 shadow-xl transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
+                Ver Proyectos
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Sobre Mí (About Me) -->
+        <section id="about" class="py-20 md:py-32 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-cyan-400 mb-12">Sobre Mí</h2>
+                <div class="max-w-4xl mx-auto bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl border-t-4 border-cyan-600">
+                    <!-- Placeholder de Perfil (usando la inicial M y fondo tech) -->
+                    <div class="flex justify-center mb-8">
+                        <div class="w-24 h-24 bg-cyan-700 flex items-center justify-center rounded-full border-4 border-cyan-400 text-5xl font-extrabold text-white shadow-lg">
+                            M
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+                        Soy Mauricio Angulo, un profesional apasionado por transformar datos crudos en conocimientos accionables y soluciones escalables. Cuento con experiencia en el ciclo de vida completo de la Ciencia de Datos, desde la ingesta de datos (ETL) hasta el despliegue de modelos de Machine Learning.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                        Mi enfoque se centra en la eficiencia y la solidez, buscando siempre la forma más óptima de abordar los desafíos de datos.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-cyan-400 mb-4">Habilidades Clave</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-700 text-cyan-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Python & Librerías ML</span>
+                        <span class="bg-gray-700 text-cyan-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">SQL & Bases de Datos NoSQL</span>
+                        <span class="bg-gray-700 text-cyan-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Ingeniería de Datos (ETL/ELT)</span>
+                        <span class="bg-gray-700 text-cyan-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Machine Learning (Supervisado/No Supervisado)</span>
+                        <span class="bg-gray-700 text-cyan-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Plataformas Cloud (AWS/GCP/Azure)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Portafolio -->
+        <section id="portfolio" class="py-20 md:py-32 bg-gray-900 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-cyan-400 mb-4">Portafolio</h2>
+                <p class="text-center text-xl text-gray-400 mb-16">Proyectos clave que demuestran mi experiencia y enfoque analítico.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Tarjeta de Proyecto Genérica (Fácil de Replicar) 1 -->
+                    <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-cyan-500/30 transition duration-500 transform hover:scale-[1.01] border border-gray-700">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) -->
+                        <div class="p-6 bg-cyan-700/20">
+                            <svg class="h-12 w-12 text-cyan-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v16H4V4z" />
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Modelo de Predicción de Series de Tiempo</h3>
+                            <p class="text-gray-400 text-sm mb-4">Machine Learning, Python, Prophet</p>
+                            <p class="text-gray-300 mb-6">Desarrollo de un modelo robusto para predecir la demanda de inventario con una precisión del 92%. Incluye preprocesamiento avanzado de datos estacionales.</p>
+                            <a href="https://github.com/mauangwk/project-1" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Proyecto Genérica (Fácil de Replicar) 2 -->
+                    <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-cyan-500/30 transition duration-500 transform hover:scale-[1.01] border border-gray-700">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) -->
+                        <div class="p-6 bg-cyan-700/20">
+                            <svg class="h-12 w-12 text-cyan-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Pipeline de Datos ETL en Cloud</h3>
+                            <p class="text-gray-400 text-sm mb-4">Ingeniería de Datos, AWS Lambda, SQL, Python</p>
+                            <p class="text-gray-300 mb-6">Implementación de un proceso ETL completamente automatizado para la migración de datos legacy a un Data Lake en la nube, reduciendo la latencia en un 60%.</p>
+                            <a href="https://github.com/mauangwk/project-2" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Proyecto Genérica (Fácil de Replicar) 3 -->
+                    <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-cyan-500/30 transition duration-500 transform hover:scale-[1.01] border border-gray-700">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) -->
+                        <div class="p-6 bg-cyan-700/20">
+                            <svg class="h-12 w-12 text-cyan-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0 0a3 3 0 00-3 2v1m-10-6a4 4 0 014-4h12a4 4 0 014 4v7a4 4 0 01-4 4H7a4 4 0 01-4-4V7z" />
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Análisis de Sentimiento de Redes</h3>
+                            <p class="text-gray-400 text-sm mb-4">NLP, Python, Plotly, Dashboard</p>
+                            <p class="text-gray-300 mb-6">Creación de un dashboard interactivo para monitorear el sentimiento del cliente en tiempo real, utilizando técnicas de Procesamiento de Lenguaje Natural (NLP).</p>
+                            <a href="https://github.com/mauangwk/project-3" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contact" class="py-20 md:py-32 bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-cyan-400 mb-4">Contacto</h2>
+                <p class="text-center text-xl text-gray-400 mb-16">Estoy abierto a nuevas oportunidades de colaboración y proyectos de datos.</p>
+
+                <div class="max-w-xl mx-auto bg-gray-900 p-8 md:p-10 rounded-2xl shadow-2xl border-b-4 border-cyan-600">
+                    <form action="javascript:void(0)" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-300 placeholder-gray-400" placeholder="Tu Nombre">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-300 placeholder-gray-400" placeholder="tu.email@ejemplo.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-300 placeholder-gray-400" placeholder="Describe tu proyecto o consulta aquí..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" onclick="showContactMessage()" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-gray-900 bg-cyan-400 hover:bg-cyan-300 transition duration-300 shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Contenedor del Mensaje de Confirmación (reemplaza alert) -->
+                    <div id="contact-message" class="hidden mt-6 p-4 bg-green-600/50 text-white rounded-lg text-center" role="alert">
+                        <p class="font-semibold">¡Mensaje Enviado!</p>
+                        <p class="text-sm">Gracias por tu interés. Me pondré en contacto contigo pronto.</p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+                        <p class="text-gray-400">También puedes encontrarme en:</p>
+                        <div class="flex justify-center space-x-6 mt-3">
+                            <!-- Link de GitHub -->
+                            <a href="https://github.com/mauangwk" target="_blank" class="text-gray-400 hover:text-cyan-400 transition">
+                                <!-- Icono de GitHub (Simple SVG) -->
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.165 6.839 9.504.499.092.682-.217.682-.483 0-.237-.008-.888-.01-1.748-2.782.605-3.372-1.34-3.372-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.607.069-.607 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.086 2.903.829.091-.643.351-1.086.636-1.336-2.22-.252-4.555-1.112-4.555-4.943 0-1.09.39-1.983 1.029-2.68a3.784 3.784 0 01.096-2.653s.84-.268 2.753 1.036a9.92 9.92 0 015.012 0c1.913-1.304 2.753-1.036 2.753-1.036.357.946.495 1.94.096 2.653.64.697 1.028 1.59 1.028 2.68 0 3.84-2.339 4.686-4.566 4.935.359.309.678.92.678 1.855 0 1.336-.012 2.415-.012 2.744 0 .267.184.581.687.482C20.14 20.176 23 16.427 23 12.017 23 6.484 18.523 2 13 2h-1z"/></svg>
+                            </a>
+                            <!-- Link de LinkedIn (Placeholder) -->
+                            <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition">
+                                <!-- Icono de LinkedIn (Simple SVG) -->
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.325-.02-3.044-1.852-3.044-1.853 0-2.136 1.445-2.136 2.943v5.67H9.248V9.83h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.262h-3.554zM5.337 7.21c-1.144 0-2.071-.929-2.071-2.073 0-1.144.927-2.073 2.071-2.073s2.072.929 2.072 2.073c0 1.144-.928 2.073-2.072 2.073zm1.75 13.242H3.587V9.829h3.499v10.623zM22.22 0H1.778C.8 0 0 .8 0 1.778v20.444C0 23.2 1.8 24 1.778 24h20.444C23.2 24 24 23.2 24 22.222V1.778C24 .8 23.2 0 22.222 0z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-cyan-800/50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 text-sm">© 2024 Mauricio Angulo. Desarrollado con ❤️ y Datos.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para el Menú Móvil y la simulación de Contacto -->
+    <script>
+        // Lógica del Menú Móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Lógica para mostrar el mensaje de contacto (sustituto de alert)
+        function showContactMessage() {
+            const messageBox = document.getElementById('contact-message');
+            messageBox.classList.remove('hidden');
+            
+            // Ocultar el mensaje después de 5 segundos
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000); 
+
+            // Simular el envío del formulario (opcionalmente limpiar campos)
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+
+        // Cierra el menú móvil al hacer clic en un enlace de navegación
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
