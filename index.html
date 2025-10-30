@@ -1,230 +1,272 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mauricio Anguiano - Portafolio de Data Science</title>
-    <!-- Carga de Tailwind CSS CDN para un diseño moderno y responsivo -->
+    <title>Mauricio Anguiano | Data Science Portfolio</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuración para un esquema de colores de Data Science (Dark/Cyan) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#0f172a', // Slate 900
-                        'secondary-dark': '#1e293b', // Slate 800
-                        'accent-cyan': '#06b6d4', // Cyan 500
-                        'light-text': '#f1f5f9', // Slate 100
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
+    <!-- Configuración de la fuente Inter y colores personalizados (Temática Deep Learning) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --color-primary: #0F0F1A; /* Dark Indigo/Black */
+            --color-secondary: #a78bfa; /* Violet-400 (Accent) */
+            --color-text: #e0e7ff; /* Indigo-100 (Light Text) */
         }
-    </script>
-    <!-- Uso de una fuente limpia y moderna: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+        }
+
+        /* Estilo de Fondo Abstracto (más enfocado en nodos y redes neuronales) */
+        .hero-bg-alt {
+            /* 
+            background-image: linear-gradient(135deg, rgba(15, 15, 26, 0.95) 0%, rgba(30, 30, 50, 0.8) 50%, rgba(15, 15, 26, 0.95) 100%), 
+            url('https://placehold.co/1920x1080/1e1e32/a78bfa?text=Neural+Network');
+            */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.5), 0 0 5px rgba(167, 139, 250, 0.3);
+            border-color: #a78bfa; /* violet-400 */
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body class="bg-primary-dark text-light-text font-sans antialiased">
+<body>
 
-    <!-- Barra de Navegación -->
-    <header class="sticky top-0 z-50 bg-secondary-dark/95 backdrop-blur-sm shadow-lg">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center max-w-7xl">
-            <div class="text-2xl font-bold text-accent-cyan">
-                Mauricio Anguiano
+    <!-- Navegación Fija - Estilo Indígo -->
+    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-xl border-b border-indigo-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-violet-400 hover:text-violet-300 transition duration-300">
+                        M.Anguiano<span class="text-indigo-400">.DS</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Sobre Mí</a>
+                        <a href="#portfolio" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Portafolio</a>
+                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Contacto</a>
+                    </div>
+                </div>
+                <!-- Botón de Menú Móvil -->
+                <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-md text-indigo-300 hover:text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-violet-400">
+                    <!-- Icono de Hamburguesa SVG -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
             </div>
-            <div class="space-x-4">
-                <a href="#portafolio" class="text-light-text hover:text-accent-cyan transition duration-300 font-medium">Portafolio</a>
-                <a href="#contacto" class="text-light-text hover:text-accent-cyan transition duration-300 font-medium">Contacto</a>
-            </div>
-        </nav>
-    </header>
+        </div>
 
-    <!-- Sección de Introducción (Hero) -->
-    <section id="inicio" class="py-20 sm:py-32 text-center container mx-auto px-4 max-w-7xl">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight">
-                Análisis <span class="text-accent-cyan">Profundo</span>. Impacto Real.
+        <!-- Menú Móvil -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Sobre Mí</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Portafolio</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-indigo-900 hover:text-white transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero/Principal - Fondo -->
+    <header class="hero-bg-alt pt-20 pb-28 md:py-48 flex items-center justify-center border-b-4 border-violet-500/60">
+        <div class="text-center max-w-4xl px-4">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-4">
+                Mauricio Angulo
             </h1>
-            <p class="text-xl sm:text-2xl text-gray-400 mb-8">
-                Ingeniero en Sistemas y Científico de Datos. Machine Learning enfocado en transformar datos complejos en soluciones de negocio accionables.
+            <p class="text-xl sm:text-3xl font-light text-violet-300 mb-8">
+                Ingeniero en Sistemas & Científico de Datos | <span class="font-medium text-indigo-200">Impulsando el futuro</span>
             </p>
-            <a href="#portafolio" class="inline-block bg-accent-cyan text-primary-dark font-bold py-3 px-8 rounded-full shadow-lg hover:bg-cyan-400 transition duration-300 transform hover:scale-105">
+            <a href="#portfolio" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-500 transition duration-300 shadow-xl shadow-violet-800/50 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50">
                 Ver Proyectos
             </a>
         </div>
-    </section>
+    </header>
 
-    <!-- Sección de Portafolio -->
-    <section id="portafolio" class="py-16 sm:py-24 bg-secondary-dark">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <h2 class="text-4xl font-bold text-center mb-12 border-b-2 border-accent-cyan/50 pb-2 inline-block mx-auto text-light-text">
-                Portafolio de Proyectos
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main>
+        <!-- Sección Sobre Mí (About Me) - Fondo Ligeramente más Claro -->
+        <section id="about" class="py-20 md:py-32 bg-gray-900 border-b border-indigo-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-violet-400 mb-12">Sobre Mí</h2>
+                <div class="max-w-4xl mx-auto bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl border-t-4 border-violet-600">
+                    <!-- Placeholder de Perfil -->
+                    <div class="flex justify-center mb-8">
+                        <div class="w-24 h-24 bg-violet-700 flex items-center justify-center rounded-full border-4 border-violet-400 text-5xl font-extrabold text-white shadow-lg">
+                            M
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-indigo-100 leading-relaxed mb-6">
+                        Mi nombre es Mauricio Anguiano, un profesional apasionado por transformar datos crudos en conocimientos accionables y soluciones escalables. 
+                        <!-- Cuento con experiencia en el ciclo de vida completo de la Ciencia de Datos, desde la ingesta de datos (ETL) hasta el despliegue de modelos de Machine Learning. -->
+                    </p>
+                    <p class="text-lg md:text-xl text-indigo-100 leading-relaxed mb-8">
+                        Mi enfoque se centra en la eficiencia y la solidez, buscando siempre la forma más óptima de abordar los desafíos de datos.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-violet-400 mb-4">Habilidades Clave</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-indigo-900 text-violet-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Python, Librerías ML & de Visualización</span>
+                        <span class="bg-indigo-900 text-violet-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">SQL & Bases de Datos</span>
+                        <span class="bg-indigo-900 text-violet-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Ingeniería de Datos (ETL/ELT)</span>
+                        <span class="bg-indigo-900 text-violet-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Machine Learning (Supervisado/No Supervisado)</span>
+                        <!-- <span class="bg-indigo-900 text-violet-300 text-sm font-medium px-4 py-1 rounded-full shadow-md">Plataformas Cloud (AWS/GCP/Azure)</span> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Portafolio - Fondo Principal (Dark Indigo) -->
+        <section id="portfolio" class="py-20 md:py-32 bg-[--color-primary] border-b border-indigo-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-violet-400 mb-4">Portafolio</h2>
+                <p class="text-center text-xl text-indigo-400 mb-16">Proyectos clave que demuestran mi experiencia y enfoque analítico.</p>
                 
-                <!-- Proyecto 1: Clasificación de Sentimiento (Fácil de replicar) -->
-                <div class="bg-primary-dark p-6 rounded-xl shadow-2xl hover:shadow-cyan-500/30 transition duration-300 border border-gray-700">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-accent-cyan mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <h3 class="text-xl font-semibold text-accent-cyan">Análisis de Sentimiento NLP</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Tarjeta de Proyecto  -->
+                    <div class="bg-gray-900 rounded-xl shadow-2xl overflow-hidden transition duration-500 transform hover:scale-[1.03] border border-gray-700 card-glow">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) - Más prominente y violeta -->
+                        <div class="p-6 bg-violet-800/30">
+                            <svg class="h-12 w-12 text-violet-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v16H4V4z" />    
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-siren-icon lucide-siren">
+                                <path d="M7 18v-6a5 5 0 1 1 10 0v6"/>
+                                <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/>
+                                <path d="M21 12h1"/><path d="M18.5 4.5 18 5"/>
+                                <path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Prevención de Churn</h3>
+                            <p class="text-indigo-300 text-sm mb-4">Python, Jupyter Notebooks, Scikit learn</p>
+                            <p class="text-indigo-100 mb-6">Desarrollo de un modelo robusto para predecir el churn en clientes de una Telco logrando una reducción de costos o prevencion de perdida de ingresos.</p>
+                            <a href="https://github.com/mauangwk/interconnect_churn_prevention" target="_blank" class="text-violet-400 hover:text-violet-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
                     </div>
-                    <p class="text-gray-400 mb-4">
-                        Implementación de un modelo LSTM para clasificar el sentimiento de reseñas de clientes en tiempo real. Utiliza TensorFlow y Keras.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Python</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">TensorFlow</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">NLP</span>
-                    </div>
-                    <a href="https://github.com/mauangwk/proyecto-nlp" target="_blank" class="text-light-text hover:text-cyan-400 font-medium flex items-center mt-2">
-                        Ver Repositorio
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
 
-                <!-- Proyecto 2: Predicción de Precios de Vivienda -->
-                <div class="bg-primary-dark p-6 rounded-xl shadow-2xl hover:shadow-cyan-500/30 transition duration-300 border border-gray-700">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-accent-cyan mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        <h3 class="text-xl font-semibold text-accent-cyan">Modelo de Regresión de Bienes Raíces</h3>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Desarrollo de un modelo de Random Forest para predecir precios de vivienda utilizando Scikit-learn y técnicas avanzadas de EDA.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Scikit-learn</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">EDA</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Pandas</span>
-                    </div>
-                    <a href="https://github.com/mauangwk/proyecto-regresion" target="_blank" class="text-light-text hover:text-cyan-400 font-medium flex items-center mt-2">
-                        Ver Repositorio
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-
-                <!-- Proyecto 3: Visualización de Datos Financieros -->
-                <div class="bg-primary-dark p-6 rounded-xl shadow-2xl hover:shadow-cyan-500/30 transition duration-300 border border-gray-700">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-accent-cyan mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-8v8m-4-8v8m9-15H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2z"></path></svg>
-                        <h3 class="text-xl font-semibold text-accent-cyan">Dashboard Interactivo de Mercado</h3>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Creación de un dashboard con Plotly y Dash para visualizar tendencias bursátiles, permitiendo al usuario explorar series de tiempo.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Dash</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Plotly</span>
-                        <span class="text-xs font-medium bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Finanzas</span>
-                    </div>
-                    <a href="https://github.com/mauangwk/proyecto-dash" target="_blank" class="text-light-text hover:text-cyan-400 font-medium flex items-center mt-2">
-                        Ver Repositorio
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-
-                <!-- NOTA DE EXPANSIÓN: Para agregar más proyectos, simplemente copia el div 'Proyecto 1' y edita el contenido. -->
-
-            </div>
-            
-            <div class="text-center mt-12">
-                 <a href="https://github.com/mauangwk" target="_blank" class="inline-block border border-accent-cyan text-accent-cyan font-bold py-3 px-8 rounded-full hover:bg-accent-cyan/10 transition duration-300">
-                    Ver más en GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="py-16 sm:py-24 container mx-auto px-4 max-w-7xl">
-        <h2 class="text-4xl font-bold text-center mb-12 border-b-2 border-accent-cyan/50 pb-2 inline-block mx-auto text-light-text">
-            Conversemos
-        </h2>
-        <div class="max-w-xl mx-auto bg-secondary-dark p-8 rounded-xl shadow-2xl border border-gray-700">
-            <p class="text-gray-400 text-center mb-6">
-                ¿Tienes una idea para un proyecto de datos o Machine Learning? Envíame un mensaje.
-            </p>
-            
-            <!-- Formulario de Contacto (Simulado) 
-             onsubmit="handleFormSubmit(event)"
-             -->
-            <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse"
-                target="_self" 
-                method="POST" 
-                >
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
-                    <input type="text" id="name" name="entry.1361427177"
-                    class="w-full px-4 py-2 bg-primary-dark border border-gray-600 rounded-lg focus:border-accent-cyan focus:ring focus:ring-accent-cyan/50 text-light-text" required>
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Correo Electrónico</label>
-                    <input type="email" id="email" name="entry.1722659908"
-                    class="w-full px-4 py-2 bg-primary-dark border border-gray-600 rounded-lg focus:border-accent-cyan focus:ring focus:ring-accent-cyan/50 text-light-text" required>
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Mensaje</label>
-                    <textarea id="message" name="entry.1876933165" 
-                    rows="4" class="w-full px-4 py-2 bg-primary-dark border border-gray-600 rounded-lg focus:border-accent-cyan focus:ring focus:ring-accent-cyan/50 text-light-text" required></textarea>
-                </div>
-                
-                <button type="submit" class="w-full bg-accent-cyan text-primary-dark font-bold py-3 rounded-lg shadow-lg hover:bg-cyan-400 transition duration-300 transform hover:scale-[1.01]">
-                    Enviar Mensaje
-                </button>
-                <p id="message-status" class="text-center mt-4 text-sm font-medium hidden"></p>
-            </form>
-            
-
-            <!-- Enlaces Sociales -->
-            <div class="mt-8 pt-6 border-t border-gray-700 text-center">
-                <p class="text-gray-400 mb-4">O conecta directamente:</p>
-                <div class="flex justify-center space-x-6">
-                    <!-- GitHub Link -->
-                    <a href="https://github.com/mauangwk" target="_blank" class="text-gray-300 hover:text-accent-cyan transition duration-300" aria-label="GitHub">
-                        <!-- Ícono de GitHub (Placeholder SVG) -->
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"></path></svg>                            
-                    </a>
-                    <!-- LinkedIn Link -->
-                    <a href="https://linkedin.com/in/mau-ang" target="_blank" class="text-gray-300 hover:text-accent-cyan transition duration-300" aria-label="LinkedIn">
-                        <!-- Ícono de LinkedIn (Placeholder SVG) -->
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.528-4 0v5.604h-3v-11h3v1.765c1.397-2.761 7-2.404 7 3.238v6z"></path></svg>
-                    </a>
+                    
+                    
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pie de Página -->
-    <footer class="bg-primary-dark border-t border-gray-800 py-6">
-        <div class="container mx-auto px-4 text-center text-sm text-gray-500 max-w-7xl">
-            <p>&copy; 2025 Mauro Angulo. Desarrollado con el poder de los datos.</p>
+        <!-- Sección Contacto - Fondo Ligeramente más Claro -->
+        <section id="contact" class="py-20 md:py-32 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-violet-400 mb-4">Contacto</h2>
+                <p class="text-center text-xl text-indigo-400 mb-16">Estoy abierto a nuevas oportunidades de colaboración y proyectos de datos.</p>
+
+                <div class="max-w-xl mx-auto bg-gray-800 p-8 md:p-10 rounded-2xl shadow-2xl border-b-4 border-violet-600">
+                    
+                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse"
+                        target="_blank" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-indigo-200 mb-2">Nombre Completo</label>
+                            <input type="text" id="name" 
+                            name="entry.1361427177"
+                            required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-violet-500 focus:border-violet-500 transition duration-300 placeholder-gray-400" placeholder="Tu Nombre">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-indigo-200 mb-2">Correo Electrónico</label>
+                            <input type="email" id="email" 
+                            name="entry.1722659908"
+                            required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-violet-500 focus:border-violet-500 transition duration-300 placeholder-gray-400" placeholder="tu.email@ejemplo.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-indigo-200 mb-2">Mensaje</label>
+                            <textarea id="message" 
+                            name="entry.1876933165"
+                            rows="4" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-violet-500 focus:border-violet-500 transition duration-300 placeholder-gray-400" placeholder="Describe tu proyecto o consulta aquí..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" onclick="showContactMessage()" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-500 transition duration-300 shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50">
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Contenedor del Mensaje de Confirmación (reemplaza alert) -->
+                    <div id="contact-message" class="hidden mt-6 p-4 bg-green-600/50 text-white rounded-lg text-center" role="alert">
+                        <p class="font-semibold">¡Mensaje Enviado!</p>
+                        <p class="text-sm">Gracias por tu interés. Me pondré en contacto contigo pronto.</p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+                        <p class="text-indigo-400">También puedes encontrarme en:</p>
+                        <div class="flex justify-center space-x-6 mt-3">
+                            <!-- Link de GitHub -->
+                            <a href="https://github.com/mauangwk" target="_blank" class="text-indigo-400 hover:text-violet-400 transition">
+                                <!-- Icono de GitHub (Simple SVG) -->
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.165 6.839 9.504.499.092.682-.217.682-.483 0-.237-.008-.888-.01-1.748-2.782.605-3.372-1.34-3.372-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.607.069-.607 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.086 2.903.829.091-.643.351-1.086.636-1.336-2.22-.252-4.555-1.112-4.555-4.943 0-1.09.39-1.983 1.029-2.68a3.784 3.784 0 01.096-2.653s.84-.268 2.753 1.036a9.92 9.92 0 015.012 0c1.913-1.304 2.753-1.036 2.753-1.036.357.946.495 1.94.096 2.653.64.697 1.028 1.59 1.028 2.68 0 3.84-2.339 4.686-4.566 4.935.359.309.678.92.678 1.855 0 1.336-.012 2.415-.012 2.744 0 .267.184.581.687.482C20.14 20.176 23 16.427 23 12.017 23 6.484 18.523 2 13 2h-1z"/></svg>
+                            </a>
+                            <!-- Link de LinkedIn (Placeholder) -->
+                            <a href="https://linkedin.com/in/mau-ang" target="_blank" class="text-indigo-400 hover:text-violet-400 transition">
+                                <!-- Icono de LinkedIn (Simple SVG) -->
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.325-.02-3.044-1.852-3.044-1.853 0-2.136 1.445-2.136 2.943v5.67H9.248V9.83h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.262h-3.554zM5.337 7.21c-1.144 0-2.071-.929-2.071-2.073 0-1.144.927-2.073 2.071-2.073s2.072.929 2.072 2.073c0 1.144-.928 2.073-2.072 2.073zm1.75 13.242H3.587V9.829h3.499v10.623zM22.22 0H1.778C.8 0 0 .8 0 1.778v20.444C0 23.2 1.8 24 1.778 24h20.444C23.2 24 24 23.2 24 22.222V1.778C24 .8 23.2 0 22.222 0z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-indigo-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-indigo-400 text-sm">© 2025 Mauricio Anguiano. Desarrollado Datos.</p>
         </div>
     </footer>
 
-    <!-- Script de Manejo del Formulario (Simulado) -->
+    <!-- JavaScript para el Menú Móvil y la simulación de Contacto -->
+     <!-- <form action="javascript:void(0)" class="space-y-6"> -->
     <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const status = document.getElementById('message-status');
-            const form = event.target;
+        // Lógica del Menú Móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Lógica para mostrar el mensaje de contacto (sustituto de alert)
+        function showContactMessage() {
+            const messageBox = document.getElementById('contact-message');
+            messageBox.classList.remove('hidden');
             
-            status.classList.remove('hidden', 'text-red-400', 'text-green-400');
-            status.classList.add('text-cyan-400', 'block');
-            status.textContent = 'Enviando mensaje...';
-            
-            // Simulación de envío de 2 segundos
+            // Ocultar el mensaje después de 5 segundos
             setTimeout(() => {
-                const name = document.getElementById('name').value;
-                
-                status.classList.remove('text-cyan-400');
-                status.classList.add('text-green-400');
-                status.textContent = `¡Gracias por tu mensaje, ${name}! Te contactaré pronto.`;
-                
-                form.reset();
-            }, 2000);
+                messageBox.classList.add('hidden');
+            }, 5000); 
+
+            // Simular el envío del formulario (opcionalmente limpiar campos)
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
         }
+
+        // Cierra el menú móvil al hacer clic en un enlace de navegación
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
     </script>
 </body>
 </html>
