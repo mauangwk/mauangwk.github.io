@@ -6,6 +6,7 @@
     <title>Mauricio Anguiano | Data Science Portfolio</title>
     <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="google-form.js"></script>
     <!-- Configuración de la fuente Inter y colores personalizados (Temática Deep Learning) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -171,8 +172,11 @@
 
                 <div class="max-w-xl mx-auto bg-gray-800 p-8 md:p-10 rounded-2xl shadow-2xl border-b-4 border-violet-600">
                     
-                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse"
-                        target="_blank" method="POST" class="space-y-6">
+                    <form class="space-y-6" id="contact-form"
+                        target="_blank" method="POST" 
+                        action=
+                        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg"
+                        onsubmit="return window.submitGoogleForm(this);">
                         <div>
                             <label for="name" class="block text-sm font-medium text-indigo-200 mb-2">Nombre Completo</label>
                             <input type="text" id="name" 
@@ -183,6 +187,7 @@
                             <label for="email" class="block text-sm font-medium text-indigo-200 mb-2">Correo Electrónico</label>
                             <input type="email" id="email" 
                             name="entry.1722659908"
+                            pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
                             required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-violet-500 focus:border-violet-500 transition duration-300 placeholder-gray-400" placeholder="tu.email@ejemplo.com">
                         </div>
                         <div>
@@ -192,12 +197,14 @@
                             rows="4" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-violet-500 focus:border-violet-500 transition duration-300 placeholder-gray-400" placeholder="Describe tu proyecto o consulta aquí..."></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-500 transition duration-300 shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50">
+                            <button class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-500 transition duration-300 shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50"
+                                type="submit">
+                            <!-- onclick="showContactMessage(false)" -->
                                 Enviar Mensaje
                             </button>
                         </div>
                     </form>
-                    
+                    <p id="mensajeError" style="color: red;"></p>
                     <!-- Contenedor del Mensaje de Confirmación (reemplaza alert) -->
                     <div id="contact-message" class="hidden mt-6 p-4 bg-green-600/50 text-white rounded-lg text-center" role="alert">
                         <p class="font-semibold">¡Mensaje Enviado!</p>
@@ -233,7 +240,7 @@
 
     <!-- JavaScript para el Menú Móvil y la simulación de Contacto -->
      <!-- <form action="javascript:void(0)" class="space-y-6"> 
-        onclick="showContactMessage()"
+        
         -->
     <script>
         // Lógica del Menú Móvil
@@ -243,19 +250,63 @@
         });
 
         // Lógica para mostrar el mensaje de contacto (sustituto de alert)
-        function showContactMessage() {
-            const messageBox = document.getElementById('contact-message');
-            messageBox.classList.remove('hidden');
+        function showContactMessage(sw) {
             
-            // Ocultar el mensaje después de 5 segundos
-            setTimeout(() => {
-                messageBox.classList.add('hidden');
-            }, 5000); 
+            if(sw){
 
-            // Simular el envío del formulario (opcionalmente limpiar campos)
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+                // Simular el envío del formulario (opcionalmente limpiar campos)
+                nameEl = document.getElementById('name');
+                mailEl = document.getElementById('email');
+                messageEl = document.getElementById('message');
+                
+                nameEl.value = '';
+                mailEl.value = '';
+                messageEl.value = '';
+                
+                const messageBox = document.getElementById('contact-message');
+                messageBox.classList.remove('hidden');
+                
+                // Ocultar el mensaje después de 5 segundos
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 5000); 
+            }
+            
+        }
+
+        /**
+         * Función para validar el campo de correo electrónico.
+         * Retorna true si el email es válido, false en caso contrario.
+         */
+        function validarEmail() {
+            // 1. Obtener el valor del campo de email y el elemento para mostrar el error
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const mensajeError = document.getElementById('mensajeError');
+            
+            // 2. Expresión regular para validar el formato básico de un email
+            // Esta regex comprueba que haya algo@algo.dominio
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // 3. Comprobar si el email está vacío
+            if (email === "") {
+                mensajeError.textContent = "El campo de correo electrónico no puede estar vacío.";
+                emailInput.focus(); // Pone el foco en el campo
+                return false; // Impide el envío del formulario
+            }
+
+            // 4. Comprobar el formato usando la expresión regular
+            if (regexEmail.test(email)) {
+                // El email es válido
+                mensajeError.textContent = ""; // Limpia cualquier mensaje de error anterior
+                // En una aplicación real, aquí se podría enviar el formulario con AJAX o simplemente permitir el envío (return true)
+                return true; // Permite el envío del formulario
+            } else {
+                // El email NO es válido
+                mensajeError.textContent = "Por favor, introduce una dirección de correo electrónico válida (ej: usuario@dominio.com).";
+                emailInput.focus(); // Pone el foco en el campo
+                return false; // Impide el envío del formulario
+            }
         }
 
         // Cierra el menú móvil al hacer clic en un enlace de navegación
@@ -264,6 +315,21 @@
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+
+        // const contactForm = document.forms['contact-form'];
+        // // action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse"
+        // const formAction = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse";
+        // contactForm.addEventListener('submit', e=>{
+        //     e.preventDefault();
+        //     if(validarEmail()){
+        //         fetch(formAction, {method:"POST", body: new FormData(contactForm)});
+        //         // alert("formulario enviado");
+        //         // window.location.reload();
+        //     }
+        //     // fetch(formAction, init:{method:"POST", body: new FormData(contactForm)})
+        // });
+
+        // onsubmit="return validarEmail();"
     </script>
 </body>
 </html>
