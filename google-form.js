@@ -14,6 +14,11 @@
       xhr.open('POST', form_action , true);
       xhr.setRequestHeader('Accept', 'application/xml, text/xml, */*; q=0.01');
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://mauangwk.github.io');
+
+
+      //     Access-Control-Allow-Origin: https://example.com
+
 
       xhr.onload = function() {
           if (xhr.readyState === XMLHttpRequest.DONE) {
