@@ -6,7 +6,7 @@
     <title>Mauricio Anguiano | Data Science Portfolio</title>
     <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="google-form.js"></script>
+    <!-- <script src="google-form.js"></script> -->
     <!-- Configuración de la fuente Inter y colores personalizados (Temática Deep Learning) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -158,6 +158,53 @@
                         </div>
                     </div>
 
+                    <!-- Tarjeta de Proyecto  -->
+                    <div class="bg-gray-900 rounded-xl shadow-2xl overflow-hidden transition duration-500 transform hover:scale-[1.03] border border-gray-700 card-glow">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) - Más prominente y violeta -->
+                        <div class="p-6 bg-violet-800/30">
+                            <svg class="h-12 w-12 text-violet-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M7 18v-6a5 5 0 1 1 10 0v6"/>
+                                <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/>
+                                <path d="M21 12h1"/><path d="M18.5 4.5 18 5"/>
+                                <path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Predicción de demanda de ordenes</h3>
+                            <p class="text-indigo-300 text-sm mb-4">Python, Jupyter Notebooks, Scikit learn</p>
+                            <p class="text-indigo-100 mb-6">Desarrollo de un modelo robusto para predecir el churn en clientes de una Telco logrando una reducción de costos y prevencion de perdida de ingresos.</p>
+                            <a href="https://github.com/mauangwk/interconnect_churn_prevention" target="_blank" class="text-violet-400 hover:text-violet-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- Tarjeta de Proyecto  -->
+                    <div class="bg-gray-900 rounded-xl shadow-2xl overflow-hidden transition duration-500 transform hover:scale-[1.03] border border-gray-700 card-glow">
+                        <!-- Icono de Proyecto/Visualización (SVG placeholder) - Más prominente y violeta -->
+                        <div class="p-6 bg-violet-800/30">
+                            <svg class="h-12 w-12 text-violet-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M7 18v-6a5 5 0 1 1 10 0v6"/>
+                                <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/>
+                                <path d="M21 12h1"/><path d="M18.5 4.5 18 5"/>
+                                <path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Máximos Beneficios Menores Riesgos</h3>
+                            <p class="text-indigo-300 text-sm mb-4">Python, Jupyter Notebooks, Scikit learn</p>
+                            <p class="text-indigo-100 mb-6">Desarrollo de un modelo robusto para predecir el churn en clientes de una Telco logrando una reducción de costos y prevencion de perdida de ingresos.</p>
+                            <a href="https://github.com/mauangwk/interconnect_churn_prevention" target="_blank" class="text-violet-400 hover:text-violet-300 font-semibold flex items-center transition">
+                                Ver Repositorio en GitHub
+                                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+
+
                     
                     
                 </div>
@@ -172,11 +219,12 @@
 
                 <div class="max-w-xl mx-auto bg-gray-800 p-8 md:p-10 rounded-2xl shadow-2xl border-b-4 border-violet-600">
                     
-                    <form class="space-y-6" id="contact-form"
-                        target="_blank" method="POST" 
-                        action=
-                        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg"
-                        onsubmit="return window.submitGoogleForm(this);">
+        
+                    <!-- target="_blank" method="POST" 
+                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg"
+                    onsubmit="return window.submitGoogleForm(this);" -->
+                    <form class="space-y-6" 
+                        id="contact-form">
                         <div>
                             <label for="name" class="block text-sm font-medium text-indigo-200 mb-2">Nombre Completo</label>
                             <input type="text" id="name" 
@@ -198,11 +246,13 @@
                         </div>
                         <div class="text-center">
                             <button class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-500 transition duration-300 shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50"
-                                type="submit">
-                            <!-- onclick="showContactMessage(false)" -->
+                                onclick="showContactMessage(false)"
+                                type="submit" >
                                 Enviar Mensaje
                             </button>
                         </div>
+
+                        
                     </form>
                     <p id="mensajeError" style="color: red;"></p>
                     <!-- Contenedor del Mensaje de Confirmación (reemplaza alert) -->
@@ -243,36 +293,7 @@
         
         -->
     <script>
-        // Lógica del Menú Móvil
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Lógica para mostrar el mensaje de contacto (sustituto de alert)
-        function showContactMessage(sw) {
-            
-            if(sw){
-
-                // Simular el envío del formulario (opcionalmente limpiar campos)
-                nameEl = document.getElementById('name');
-                mailEl = document.getElementById('email');
-                messageEl = document.getElementById('message');
-                
-                nameEl.value = '';
-                mailEl.value = '';
-                messageEl.value = '';
-                
-                const messageBox = document.getElementById('contact-message');
-                messageBox.classList.remove('hidden');
-                
-                // Ocultar el mensaje después de 5 segundos
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                }, 5000); 
-            }
-            
-        }
+       
 
         /**
          * Función para validar el campo de correo electrónico.
@@ -309,12 +330,7 @@
             }
         }
 
-        // Cierra el menú móvil al hacer clic en un enlace de navegación
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
+
 
         // const contactForm = document.forms['contact-form'];
         // // action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEwjAfU72c6wGaJX2qrD23b5Is46wdfukdnWPYiy4A922-yg/formResponse"
@@ -330,6 +346,63 @@
         // });
 
         // onsubmit="return validarEmail();"
+    </script>
+
+    <!-- JavaScript para el Menú Móvil y la simulación de Contacto -->
+    <script>
+        // Lógica del Menú Móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Lógica para mostrar el mensaje de contacto (sustituto de alert)
+        function showContactMessages() {
+            const messageBox = document.getElementById('contact-message');
+            messageBox.classList.remove('hidden');
+            
+            // Ocultar el mensaje después de 5 segundos
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000); 
+
+            // Simular el envío del formulario (opcionalmente limpiar campos)
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+
+        // Lógica para mostrar el mensaje de contacto (sustituto de alert)
+        function showContactMessage(sw) {
+            
+            if(sw){
+
+                // Simular el envío del formulario (opcionalmente limpiar campos)
+                nameEl = document.getElementById('name');
+                mailEl = document.getElementById('email');
+                messageEl = document.getElementById('message');
+                
+                nameEl.value = '';
+                mailEl.value = '';
+                messageEl.value = '';
+                
+                const messageBox = document.getElementById('contact-message');
+                messageBox.classList.remove('hidden');
+                
+                // Ocultar el mensaje después de 5 segundos
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 5000); 
+            }
+            
+        }
+
+        // Cierra el menú móvil al hacer clic en un enlace de navegación
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
     </script>
 </body>
 </html>
